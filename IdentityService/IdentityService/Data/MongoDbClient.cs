@@ -1,6 +1,6 @@
 ﻿using IdentityService.Configuration;
-using IdentityService.Models;
 using Microsoft.Extensions.Options;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace IdentityService.Data;
@@ -16,7 +16,7 @@ public class MongoDbClient : IMongoDbClient
     
     private const string DatabaseName = "Users";
     
-    public User GetUser(string login, string password)
+    public BsonDocument? GetUser(string login, string password)
     {
         throw new NotImplementedException();
     }

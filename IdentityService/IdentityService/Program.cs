@@ -1,4 +1,5 @@
 using IdentityService.Configuration;
+using IdentityService.Data;
 using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Configuration.GetSection("DatabaseConfiguration").Get<DatabaseConfiguration>(options =>
     options.BindNonPublicProperties = true);
+
+builder.Services.AddSingleton<IMongoDbClient, MongoDbClient>();
 
 var app = builder.Build();
 

@@ -1,9 +1,9 @@
-﻿using IdentityService.Models;
+﻿using MongoDB.Bson;
 
 namespace IdentityService.Data;
 
 public interface IMongoDbClient
 {
-    User GetUser(string login, string password);
+    BsonDocument? GetUser(string login, string password);
     void CreateUser(string login, string password);
 }

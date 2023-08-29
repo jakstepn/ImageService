@@ -34,8 +34,7 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "MONGODB_CONNECTION_STRING": "mongodb://TestLogin:TestPassword@localhost:27017"
+        "ASPNETCORE_ENVIRONMENT": "Development"
       }
     }
   }
