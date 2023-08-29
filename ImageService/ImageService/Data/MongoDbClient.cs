@@ -1,4 +1,5 @@
-﻿using ImageService.Exceptions;
+﻿using ImageService.Configuration;
+using ImageService.Exceptions;
 using ImageService.Models;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -8,7 +9,7 @@ namespace ImageService.Data;
 public class MongoDbClient : IMongoDbClient
 {
     private readonly MongoClient _client =
-        new MongoClient(Environment.GetEnvironmentVariable("MONGODB_CONNECTION_STRING"));
+        new MongoClient(DatabaseConfiguration.ConnectionString);
 
     private const string DatabaseName = "Images";
 

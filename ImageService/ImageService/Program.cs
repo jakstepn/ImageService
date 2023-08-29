@@ -1,3 +1,4 @@
+using ImageService.Configuration;
 using ImageService.Data;
 using ImageService.Services.Categories;
 using ImageService.Services.Images;
@@ -15,6 +16,9 @@ builder.Services.AddSingleton<IMongoDbClient, MongoDbClient>();
 
 builder.Services.AddScoped<IImageProvider, ImageProvider>();
 builder.Services.AddSingleton<ICategoryProvider, CategoryProvider>();
+
+builder.Configuration.GetSection("DatabaseConfiguration").Get<DatabaseConfiguration>(options =>
+    options.BindNonPublicProperties = true);
 
 var app = builder.Build();
 

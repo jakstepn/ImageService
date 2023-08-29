@@ -2,11 +2,13 @@
 using ImageService.Exceptions;
 using ImageService.Extensions;
 using ImageService.Services.Images;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ImageService.Controllers;
 
 [Route("/image")]
+[ApiController]
 public class ImageController : ControllerBase
 {
     private readonly IImageProvider _imageProvider;
@@ -20,6 +22,7 @@ public class ImageController : ControllerBase
         _logger = logger;
     }
     
+    [Authorize]
     [HttpGet("{category}")]
     public ActionResult<IEnumerable<Image>> GetImages(string category)
     {
@@ -34,7 +37,8 @@ public class ImageController : ControllerBase
             return BadRequest(e.Message);
         }
     }
-
+    
+    [Authorize]
     [HttpGet("{category}/{amount:int}")]
     public ActionResult<Image> GetImages(string category, int amount)
     {
@@ -50,6 +54,7 @@ public class ImageController : ControllerBase
         }
     }
 
+    [Authorize]
     [HttpPost]
     public ActionResult<Image> SaveImage(Image image)
     {
@@ -65,6 +70,7 @@ public class ImageController : ControllerBase
         }
     }
     
+    [Authorize]
     [HttpDelete("{category}/{id}")]
     public ActionResult<Image> DeleteImage(string category, string id)
     {

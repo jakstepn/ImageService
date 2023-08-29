@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ImageService.Controllers;
 
 [Route("category")]
+[ApiController]
 public class CategoryController : ControllerBase
 {
     private readonly ICategoryProvider _categoryProvider;
